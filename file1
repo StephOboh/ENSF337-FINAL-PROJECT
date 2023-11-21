@@ -1,0 +1,110 @@
+#include <iostream>
+#include <fstream>
+#include <vector>
+#include <iomanip>
+#include <stdlib.h>
+using namespace std;
+
+class Seat {
+public:
+    Seat(int row, char col) : row(row), col(col) {}
+
+    int getRow() const { return row; }
+    char getCol() const { return col; }
+
+private:
+    int row;
+    char col;
+};
+
+class Passenger {
+public:
+    Passenger(string firstName, string lastName, string phoneNumber, Seat* seat, int id)
+        : firstName(firstName), lastName(lastName), phoneNumber(phoneNumber), seat(seat), id(id) {}
+
+    void displayInfo() const {
+        cout << setw(10) << firstName << setw(10) << lastName << setw(15) << phoneNumber
+                  << setw(4) << seat->getRow() << setw(2) << seat->getCol() << setw(10) << id
+                  << endl;
+    }
+
+    int getId() const { return id; }
+
+private:
+    string firstName;
+    string lastName;
+    string phoneNumber;
+    Seat* seat;
+    int id;
+};
+
+class Flight {
+public:
+    Flight(const string& flightNumber, int numRows, int numSeatsPerRow);
+
+    void displaySeatMap() const;
+    void displayPassengerInfo() const;
+    void addPassenger();
+    void removePassenger();
+    void saveDataToFile() const;
+
+private:
+    string flightNumber;
+    int numRows;
+    int numSeatsPerRow;
+    vector<svector<Seat*>> seatMap;
+    vector<Passenger*> passengerList;
+
+    void initializeSeatMap();
+};
+
+Flight::Flight(const string& flightNumber, int numRows, int numSeatsPerRow)
+    : flightNumber(flightNumber), numRows(numRows), numSeatsPerRow(numSeatsPerRow) {
+    initializeSeatMap();
+}
+
+void Flight::initializeSeatMap() {
+    seatMap.resize(numRows, vector<Seat*>(numSeatsPerRow, nullptr));
+
+    // Populate the seatMap with Seat objects
+    for (int i = 0; i < numRows; i++) {
+        for (int j = 0; j < numSeatsPerRow; j++) {
+            seatMap[i][j] = new Seat(i + 1, static_cast<char>('A' + j));
+        }
+    }
+}
+
+void Flight::displaySeatMap() const {
+    // Display seat map
+    cout<<
+}
+
+void Flight::displayPassengerInfo() const {
+    // Display passenger information
+    // Your implementation here
+}
+
+void Flight::addPassenger() {
+    // Add a new passenger
+    // Your implementation here
+}
+
+void Flight::removePassenger() {
+    // Remove an existing passenger
+    // Your implementation here
+}
+
+void Flight::saveDataToFile() const {
+    // Save passenger information to file
+    // Your implementation here
+}
+
+int main() {
+    // Your main program logic here
+    // Use Flight class to interact with the Flight Management Program
+
+    return 0;
+}
+
+
+
