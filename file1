@@ -76,7 +76,7 @@ void Flight::initializeSeatMap() {
 
 void Flight::displaySeatMap() const {
     // Display seat map
-    cout<<
+    //displau
 }
 
 void Flight::displayPassengerInfo() const {
