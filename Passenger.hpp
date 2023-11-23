@@ -11,7 +11,7 @@ using namespace std;
 class Passenger {
 public:
     Passenger();
-    Passenger(const string& firstName, const string& lastName, const string& phoneNumber, int id, const Seat& seat);
+    Passenger(const string& firstName, const string& lastName, const string& phoneNumber, int id, const Seat seat);
     void displayInfo() const;
     int get_ID() const;
     Seat get_seat() const;
@@ -24,7 +24,8 @@ private:
     string lastName;
     string phoneNumber;
     int id;
-    Seat* seat; // maybe change to Seat* seat
+    Seat seat; // maybe change to Seat* seat
 };
 
 #endif /* Passenger_hpp */
+
