@@ -22,3 +22,4 @@ private:
 
 
 #endif /* Seat_hpp */
+
