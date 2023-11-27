@@ -1,6 +1,7 @@
 //  Flight.hpp
 #include <stdio.h>
 #include <string>
+#include <vector>
 #include "Node.hpp"
 using namespace std;
 
