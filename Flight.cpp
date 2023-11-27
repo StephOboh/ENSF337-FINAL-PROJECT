@@ -1,6 +1,8 @@
 //  Flight.cpp
 #include "Flight.hpp"
 #include <iostream>
+#include "Node.hpp"
+#include <vector>
 #include <fstream>
 #include <iomanip>
 #include <list>
