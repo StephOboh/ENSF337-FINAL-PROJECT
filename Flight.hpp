@@ -24,7 +24,7 @@ private:
     string flightNumber;
     int numRows;
     int numSeatsPerRow;
-    vector<vector<Seat>> seatMap;
+    vector<vector<Seat> > seatMap;
     Node* head; // Head of the linked list
     
     //void initializeSeatMap();  potentially needed
