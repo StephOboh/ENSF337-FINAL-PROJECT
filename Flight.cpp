@@ -32,15 +32,15 @@ void Flight::displaySeatMap() const {
 
         // Display seat map
         for (int row = 0; row < numRows; row++) {
-            cout << setw(6) << "+" << setw(6) << "----+----+----+----+----+----+" << endl;
-            cout << setw(2) << row + 1 << setw(4)<< " |";
+            cout << setw(6) << "+" << setw(6) << "---+---+---+---+---+---+" << endl;
+            cout << setw(2) << row + 1 << setw(4)<< "|";
             for (int seat = 0; seat < numSeatsPerRow; seat++) {
                 char status = seatMap[row][seat].isReserved() ? 'X' : ' ';
-                cout << setw(3) << status << " |";
+                cout << setw(3) << status << "|";
             }
             cout << endl;
         }
-        cout << setw(6) << "+" << setw(6) << "----+----+----+----+----+----+" << endl;
+        cout << setw(6) << "+" << setw(6) << "---+---+---+---+---+---+" << endl;
     
      
     /*cout << setw(20) << "Aircraft Seat Map" << endl;
