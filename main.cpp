@@ -14,13 +14,14 @@ using namespace std;
 
 int main() {
     int choice;
-    Flight flight("WJ1045",20,5);
-    populate_flight_from_file("flight_info.txt");
+    Flight flight("ABC123", 10, 6);
+    
     displayHeader();
     do {
         // Display menu
        displayMenu();
        cin >> choice;
+        populate_flight_from_file("flight_info.txt");
 
         // Process user choice
         switch (choice) {
@@ -62,7 +63,7 @@ int main() {
                 char answer;
                 cout << "Do you want to save the data into 'flight_info.txt'? Please answer <Y or N>: ";
                 cin >> answer;
-                if (answer == 'Y' || answer == 'y') {
+                if (tolower(answer) == 'y') {
                     cout << "Enter the filename: ";
                     cin >> filename;
                     flight.saveDataToFile(filename);
@@ -90,15 +91,15 @@ void populate_flight_from_file(const string &filename){
         return;
     }
 
-    int current_line = 1;
-    string line;
-    while(!file.eof()){
-        current_line++;
-        getline(file, line);
-        cout << line << endl;
-    }
-    
+    int current_line = 0;
+    string plane_id;
+    int rows, seats;
+    file >> plane_id >> rows >> seats;
+    cout << "Plane ID: " << plane_id << endl;
+    cout << "Rows: " << rows << endl;
+    cout << "Seats: " << seats << endl;
     file.close();
+
     
 }
 void displayHeader(){
