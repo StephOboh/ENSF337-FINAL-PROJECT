@@ -8,6 +8,10 @@ using namespace std;
 
 class Airline {
     public:
+        void getFlightName() const;
+        void setFlightName(string name);
+        void addFlight(Flight flight);
+        void getNumberOfFlights();
 
     private:
         string flightname;
