@@ -53,6 +53,7 @@ int main() {
                 break;
             }
             case 4: {
+                flight.displayPassengerInfo();
                 int id;
                 cout << "Please enter the ID of the passenger to be removed: ";
                 cin >> id;
