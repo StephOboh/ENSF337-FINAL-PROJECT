@@ -15,7 +15,7 @@ public:
     Flight();
     Flight(const string& flightNumber, int numRows, int numSeatsPerRow);
     void displaySeatMap() const;
-    void displayPassengerInfo() const;
+    void displayPassengerInfo() ;
     void addPassenger(const string& firstName, const string& lastName, const string& phoneNumber, int id, int row, char seat);
     void removePassenger(int id);
     void saveDataToFile(const string& filename) const;

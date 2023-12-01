@@ -58,33 +58,37 @@ void Flight::displaySeatMap() const {
      
 }
 
-void Flight::displayPassengerInfo() const {
+void Flight::displayPassengerInfo()  {
     // Display passenger information using the linked list
-    cout << "First Name    Last Name    Phone Number    Row    Seat    ID" << endl;
-    cout << "--------------------------------------------------------------" << endl;
+    cout <<left<<setw(20)<<"First Name";
+    cout <<left<<setw(20)<<"Last Name";
+    cout <<left<<setw(16)<<"Phone Number";
+    cout <<left<<setw(12)<<"Row";
+    cout <<left<<setw(8)<<"Seat";
+    cout <<left<<"ID"<<endl;
 
-    // Display passenger information using the linked list
-    Node* current = head;
-    while (current != nullptr) {
-        Passenger passenger = current->get_passenger();
+
+    cout << "---------------------------------------------------------------------------------" << endl;
+
+    Node* curr = head;
+
+  
+    // Traverse list 
+    while (curr != nullptr) {
+        Passenger passenger = curr->get_passenger();
         Seat passengerSeat = passenger.get_seat();
 
-        cout << setw(13) << left << passenger.get_firstName()
-                << setw(14) << left << passenger.get_lastName()
+        cout << setw(20) << left << passenger.get_firstName()
+                << setw(20) << left << passenger.get_lastName()
                 << setw(16) << left << passenger.get_phoneNumber()
-        << setw(7) << left << passengerSeat.get_row()
-        << setw(6) << left << passengerSeat.get_seat()
+        << setw(11) << left << passengerSeat.get_row()
+        << setw(7) << left << passengerSeat.get_seat()
                 << passenger.get_ID() << endl;
+        cout << "---------------------------------------------------------------------------------" << endl;
 
-        current = current->get_next();
+        curr = curr->get_next();
     }
     
-    /*Node* current = head;
-    while (current != nullptr) {
-        current->get_passenger().displayInfo();
-        current = current->get_next();
-    }
-     */
 }
 
 void Flight::addPassenger(const string& firstName, const string& lastName, const string& phoneNumber, int id, int row, char seatChar) {
@@ -112,7 +116,6 @@ void Flight::addPassenger(const string& firstName, const string& lastName, const
         // Reserve the corresponding seat in the seatMap
         seatMap[row - 1][seatChar - 'A'].reserve();
 
-        cout << "Passenger added successfully." << endl;
     
     /*Seat seat(row, seatChar);
     Passenger newPassenger(firstName, lastName, phoneNumber, id, seat);

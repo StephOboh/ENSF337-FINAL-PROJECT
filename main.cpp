@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <fstream>
+#include <sstream>
 #include "Flight.hpp"
 #include "Flight.cpp"
 #include "Node.hpp"
@@ -14,14 +15,14 @@ using namespace std;
 
 int main() {
     int choice;
-    Flight flight("ABC123", 10, 6);
+    Flight flight = populate_flight_from_file("flight_info.txt");
     
     displayHeader();
     do {
         // Display menu
        displayMenu();
        cin >> choice;
-        populate_flight_from_file("flight_info.txt");
+        
 
         // Process user choice
         switch (choice) {
@@ -40,7 +41,7 @@ int main() {
                 cin >> firstName;
                 cout << "Last Name: ";
                 cin >> lastName;
-                cout << "Phone Number: ";
+                cout << "Phone Number (XXX-XXX-XXXX): ";
                 cin >> phoneNumber;
                 cout << "ID: ";
                 cin >> id;
@@ -84,21 +85,58 @@ int main() {
 }
     
 
-void populate_flight_from_file(const string &filename){
+Flight populate_flight_from_file(const string &filename){
+
     ifstream file(filename);
     if(file.fail()){
         cout << "Unable to open file" << endl;
-        return;
+        exit(1);
     }
-
-    int current_line = 0;
-    string plane_id;
+    string plane_id, line;
     int rows, seats;
-    file >> plane_id >> rows >> seats;
-    cout << "Plane ID: " << plane_id << endl;
-    cout << "Rows: " << rows << endl;
-    cout << "Seats: " << seats << endl;
+    getline(file, line);
+    stringstream plane_info(line);
+    plane_info >> plane_id >> rows >> seats;
+    Flight flight(plane_id, rows, seats);
+
+    char s[21];
+    string first_name, last_name, phone_number;
+    int id, row;
+    char seatletter;
+    do{
+        file.get(s, 21, '\0');
+        if(file.eof()){
+            break;
+        }
+        first_name = s;
+        trim_trailing_spaces(first_name);
+
+        file.get(s, 21, '\0');
+        if(file.eof()){
+            break;
+        }
+        last_name = s;
+        trim_trailing_spaces(last_name);
+
+        file.get(s, 21, '\0');
+        if(file.eof()){
+            break;
+        }
+        phone_number = s;
+        trim_trailing_spaces(phone_number);
+
+        file>>row>> seatletter>>id;
+        flight.addPassenger(first_name, last_name, phone_number, id, row, seatletter);
+
+
+
+
+    }while(!file.eof());
+    
+
+    
     file.close();
+    return flight;
 
     
 }
@@ -126,6 +164,9 @@ void displayMenu(){
 
 
 
-
-
-
+void trim_trailing_spaces(string &str) {
+    size_t endpos = str.find_last_not_of(" \t");
+    if (string::npos != endpos) {
+        str = str.substr(0, endpos + 1);
+    }
+}
