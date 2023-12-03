@@ -25,7 +25,7 @@ private:
     string lastName;
     string phoneNumber;
     int id;
-    Seat seat; // maybe change to Seat* seat
+    Seat seat; 
 };
 
 #endif
