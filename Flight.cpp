@@ -23,18 +23,19 @@ Flight::Flight(const string& flightNumber, int numRows, int numSeatsPerRow)
     }
 }
 
+
 void Flight::displaySeatMap() const {
     cout<<""<<endl;
-    cout << "      Aircraft Seat Map" << endl;
+    cout << setw(10)<< right << "Aircraft Seat Map" << endl;
     cout << "   ";
     for(char c = 'A'; c < 'A' + numSeatsPerRow; c++) {
-        cout << setw(4) <<c;
+        cout << setw(4) << right <<c;
 
     }
     cout << endl;
 
     for (int i = 0; i<numRows; i++){
-        cout<< setw(5) << "+";
+        cout<< setw(5) << right << "+";
         for (int j = 0; j<numSeatsPerRow; j++){
             cout << "---+";
         }
@@ -48,11 +49,11 @@ void Flight::displaySeatMap() const {
         }
 
         for(int j = 0; j < numSeatsPerRow; j++){
-            cout << setw(3) <<"|" << (seatMap[i][j].isReserved() ? "X" : " ");
+            cout << setw(3) << right <<"|" << (seatMap[i][j].isReserved() ? "X" : " ");
         }
         cout<< setw(3) << "|" << endl;
     }
-    cout << setw(5) << "+";
+    cout << setw(5) << right << "+";
     for (int j = 0; j < numSeatsPerRow; j++){
         cout << "---+";
     }
