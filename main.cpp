@@ -16,7 +16,7 @@ using namespace std;
 void displayHeader() {
 cout << "Version: 1.0\n"
     << "Term Project - Flight Management Program in C++\n"
-    << "Produced by: David Nguyen, Stephanie Oboh, Moyo Ogunjobi\n"
+    << "Produced by: David Nguyen, Stephenie Oboh, Moyo Ogunjobi\n"
     << "Year: 2023\n"
     << "<<< Press Return to Continue>>>>\n";
 
